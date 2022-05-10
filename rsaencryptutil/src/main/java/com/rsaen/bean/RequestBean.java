@@ -11,8 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RequestBean {
 	
-	private String message;
 	private String action;
+	private String message;
+	
 	
 
 }

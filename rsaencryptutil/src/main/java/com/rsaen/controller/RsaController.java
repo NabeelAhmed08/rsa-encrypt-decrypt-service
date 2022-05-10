@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rsaen.bean.RequestBean;
 import com.rsaen.bean.ResponseBean;
+import com.rsaen.service.DecryptService;
+import com.rsaen.service.EncryptService;
 import com.rsaen.service.KeyGeneratorService;
 
 @RestController
@@ -27,6 +29,12 @@ public class RsaController {
 
 	@Autowired
 	KeyGeneratorService keyGeneratorService;
+	
+	@Autowired
+	DecryptService decryptService;
+	
+	@Autowired
+	EncryptService encryptService;
 
 	@GetMapping(value = "/generate/keys")
 	public ResponseBean generateKeys() {
@@ -39,7 +47,7 @@ public class RsaController {
 	public ResponseBean encryptMessage(@PathVariable("message") String messageRequest) {
 
 		try {
-			String encryptedMessage = keyGeneratorService.encryptMessage(messageRequest);
+			String encryptedMessage = encryptService.encryptMessage(messageRequest);
 			return new ResponseBean(encryptedMessage);
 
 		} catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
@@ -58,13 +66,13 @@ public class RsaController {
 		try {
 
 			if (req.getAction().equalsIgnoreCase("ENCRYPT")) {
-				String encryptedMessage = keyGeneratorService.encryptMessage(req.getMessage());
+				String encryptedMessage = encryptService.encryptMessage(req.getMessage());
 				return new ResponseBean(encryptedMessage);
 			}
 
 			else if (req.getAction().equalsIgnoreCase("DECRYPT")) {
 
-				String decryptedMessage = keyGeneratorService.decryptMessage(req.getMessage());
+				String decryptedMessage = decryptService.decryptMessage(req.getMessage());
 				return new ResponseBean(decryptedMessage);
 			} else {
 				throw new Exception("Error");

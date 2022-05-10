@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "06928f72-37d4-4ea1-b7e0-4f12da68255e",
+		"name": "Rsa-Encrypt-Decrypt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GenerateKeys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/generate/keys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"generate",
+						"keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "encrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Hi this is Nabeel secret\",\r\n    \"action\": \"encrypt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rsa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rsa"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Encrypt Sample OP",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Hi this is Nabeel secret\",\r\n    \"action\": \"encrypt\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rsa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rsa"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 May 2022 15:17:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"fVG5X6hxzFQi7xXiAFvMb0foLm6eRIIsH6vopWIYeO4L1lcjC7VxEEnw2n7Jxdkh0hsiNvuTr9VvHw4+LdJKpK7j8JKWX+Vzb1aFrf2GZSi5TvDVtutRiagEVMw8qiyPkhh9F/Cr3aQtPAM2ZTO9HP7S17733iLIqyn+7+i0H9BsP4q9GqxSVbmyUxvYp0/84Yf/Hl0MDSV+Mq13N+Qo1WSqBM0BmRZLeRu78CcqiP+pnLf390iEJ+DinuVLOw1M/UW/sC3AcLtKtfO1i4KWwTr9btaXWKkZoLl7u1szQXI1DDa+QzN/pg37cplDGY2iM2PVBeSc+s65BYdF5OsFEA==\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Decrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Hi this is Nabeel secret\",\r\n    \"action\": \"encrypt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rsa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rsa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
